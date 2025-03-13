@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Alok Kumar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #121212;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background: #000;
+      color: #fff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 15px;
+    }
+
+    nav ul li {
+      display: inline-block;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #FFD700;
+    }
+
+    /* Banner Section */
+    .hero {
+      background: url('bg2.jpg') no-repeat center center/cover;
+      color: #FFD700;
+      padding: 100px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 60vh;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+
+    /* Blog Section */
+    #blog {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    #blog h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    #blog p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: auto;
+      color: #444;
+    }
+
+    /* Related Blog Posts */
+    .related-blogs {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .related-blogs h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .blog-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .blog-box {
+      background: #f4f4f4;
+      padding: 20px;
+      width: 300px;
+      text-align: left;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      text-decoration: none;
+      color: black;
+      display: block;
+    }
+
+    .blog-box:hover {
+      background: #FFD700;
+      color: black;
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      border: 2px solid black;
+    }
+
+    .blog-box h3 {
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+
+    .blog-box p {
+      font-size: 1rem;
+      color: #444;
+    }
+
+    /* Contact Section */
+    #contact {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    #contact h2 {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 3px solid black;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      margin-bottom: 30px;
+    }
+
+   
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 20px;
+      background: #f4f4f4;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    form input, form textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    form button {
+      background: #FFD700;
+      color: #000;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    form button:hover {
+      background: #000;
+      color: #FFD700;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .blog-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .blog-box {
+        width: 90%;
+      }
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #121212;
+      line-height: 1.6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #121212;
+      line-height: 1.6;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #121212;
+      line-height: 1.6;
+    }
+
+    /* Blog Section */
+    #blog {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+      text-align: left;
+    }
+
+    /* Blog Content Containers */
+    .blog-content {
+      padding: 20px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    /* Hover effect: background turns white */
+    .blog-content:hover {
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Style for h2 (Yellow Color) */
+    .blog-content h2 {
+      color: #FFD700;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .blog-content h3 {
+      font-size: 1.5rem;
+      margin-top: 15px;
+      color: #333;
+    }
+
+    .blog-content p {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    /* Word Hover Effect */
+    .blog-content span {
+      transition: color 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    /* .blog-content span:h {
+      color: #FFD700;
+    } */
+
+    /* Comment Section */
+    .comment-section {
+      margin-top: 40px;
+      padding: 20px;
+      background: #f4f4f4;
+      border-radius: 8px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .comment-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #000;
+    }
+
+    .comment-section input, .comment-section textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .comment-section textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .comment-section button {
+      background: #FFD700;
+      color: #000;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .comment-section button:hover {
+      background: #000;
+      color: #FFD700;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      #blog {
+        padding: 40px 15px;
+      }
+
+      .blog-content h2 {
+        font-size: 1.8rem;
+      }
+
+      .blog-content h3 {
+        font-size: 1.3rem;
+      }
+
+      .blog-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <ul>
+      <li><a href="portfolio.html">Home</a></li>
+      <li><a href="portfolio.html#About">About</a></li>
+      <li><a href="portfolio.html#Service">Services</a></li>
+      <li><a href="portfolio.html#Portfolio">portfolio</a></li>
+      <li><a href="blog.html#Blog">Blog</a></li>
+      <li><a href="portfolio.html#Contect">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1>What is Digital Marketing & Why It’s <br>
+        Essential in Today’s World? 🚀</h1>
+  </section>
+
+  <section id="blog">
+
+    <section id="blog">
+
+        <div class="blog-content">
+          <h2>Introduction</h2>
+          <p><span>Hey there!</span> 👋 <span>Ever wondered why</span> businesses are all over <span>social media</span>, running ads, or popping up on <span>Google searches?</span> That’s <span>digital marketing</span> at work! Whether you’re a <span>business owner</span>, a freelancer, or someone just curious, <span>understanding digital marketing</span> is super important in today’s digital-first world. Let’s dive in and <span>explore what digital marketing</span> is and why it’s a <span>game-changer</span> in 2025! 🔥</p>
+        </div>
+    
+        <div class="blog-content">
+          <h2>What is Digital Marketing?</h2>
+          <p>In simple terms, <span>digital marketing</span> is <span>promoting products</span> or <span>services using the internet.</span> Instead of traditional marketing like <span>TV ads</span> or <span>billboards</span>, <span>digital marketing</span> happens <span>online</span>—where people <span>spend most of their time! 💻📱</span></p>
+        </div>
+    
+        <div class="blog-content">
+          <h2>Why is Digital Marketing Important? 🤔</h2>
+          <h3>1️⃣ Everyone is Online 🌍</h3>
+          <p><span>From scrolling</span> through <span>Instagram</span> to searching on <span>Google</span>, people are spending <span>hours online daily.</span> If a <span>business isn’t online</span>, it’s <span>invisible!</span> Digital marketing ensures brands stay in front of their audience <span>24/7.</span></p>
+    
+          <h3>2️⃣ Cost-Effective Compared to Traditional Marketing 💰</h3>
+          <p><span>Running TV ads</span> or printing <span>billboards</span> is super <span>expensive!</span> Digital marketing, on the other hand, lets businesses <span>reach their audience</span> at a <span>fraction of the cost.</span></p>
+    
+          <h3>3️⃣ Better Targeting 🎯</h3>
+          <p>With digital marketing, businesses can <span>target specific</span> <span>age groups</span>, <span>interests</span>, <span>locations</span>, and <span>behaviors</span>—making ads more effective and <span>not wasting money.</span></p>
+        </div>
+    
+        <div class="blog-content">
+          <h2>Final Thoughts: Digital Marketing is the Future! 🚀</h2>
+          <p>Whether you’re a <span>business owner</span>, <span>freelancer</span>, <span>student</span>, or <span>marketer</span>, <span>digital marketing</span> is not just an option anymore—it’s a <span>necessity.</span> In a world where <span>everything is online</span>, having a strong <span>digital presence</span> keeps <span>businesses ahead</span> of the <span>competition.</span></p>
+        </div>
+    
+        <div class="blog-content">
+          <h2>Let’s Talk! 👇</h2>
+          <p>What are your thoughts on <span>digital marketing?</span> Have you tried any <span>digital strategies</span> for your <span>business</span> or <span>personal brand?</span> Drop a comment below—I’d love to hear your <span>experiences! 🚀😊</span></p>
+        </div>
+    
+        <!-- Comment Section -->
+        <div class="comment-section">
+          <h3>Leave a Comment</h3>
+          <form id="commentForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <textarea id="comment" placeholder="Write your comment here..." required></textarea>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        <section class="related-blogs">
+            <h2>Other Blogs</h2>
+            <div class="blog-container">
+              <a href="blog.html" class="blog-box">
+                <h3>What is Digital Marketing & Why It’s
+                  Essential in Today’s World? 🚀</h3>
+                <p>Grow your brand with the latest social media trends.</p>
+              </a>
+              <a href="blog2.html" class="blog-box">
+                <h3>Google Ads Guide</h3>
+                <p>A complete guide to running high-converting Google Ads campaigns.</p>
+              </a>
+            </div>
+          </section>
+        
+          <section id="contact">
+            <h2>Contact Me</h2>
+            <form>
+              <input type="text" placeholder="Your Name">
+              <input type="email" placeholder="Your Email">
+              <textarea placeholder="Your Message"></textarea>
+              <button>Send Message</button>
+            </form>
+    
+      </section>
+
+  </section>
+
+  <footer>&copy; 2025 Alok Kumar. All rights reserved.</footer>
+
+</body>
+</html>
