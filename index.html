@@ -851,36 +851,40 @@
   <footer>&copy; 2025 Alok Kumar. All rights reserved.</footer>
 <!--   https://dashboard.emailjs.com/admin  -->
 <!--   For connect with gmail -->
-  <script>
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
-      event.preventDefault(); // Prevents page refresh
+    <!-- Template Main JS File -->
+  <script src="main.js"></script>
+  <!-- link of emailjs -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-      // Get form values
-      var name = document.getElementById("name").value;
-      var email = document.getElementById("email").value;
-      var message = document.getElementById("message").value;
+<script type="text/javascript">
+  // Initialize Email.js with the public key
+  emailjs.init('_Kp3q1YF8VSDX6Pri');
+</script>
 
-      // Create mailto link
-      var mailtoLink = "mailto:aalokkumarroy12@gmail.com?subject=New Contact Form Submission&body="
-                        + "Name: " + encodeURIComponent(name) + "%0D%0A"
-                        + "Email: " + encodeURIComponent(email) + "%0D%0A"
-                        + "Message: " + encodeURIComponent(message);
+<script>
+  const btn = document.getElementById('button');
+  document.getElementById('form').addEventListener('Send Message ', function(event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+   //indicate that the email is being sent
+    btn.value = 'Sending...';
+   // Specify the Email.js 
+    const serviceID = 'service_u436xnb';
+    const templateID = '__ejs-test-mail-service__';
+    // Use Email.js to send the form data
+    emailjs.sendForm(serviceID, templateID, this)
+      .then(() => {
+        btn.value = 'Send Message';
+        alert('we will connect you soon!');
+      }, (err) => {
+        btn.value = 'Send Message';
+        alert(JSON.stringify(err));
+      });
+  });
+</script>
 
-      // Open email client
-      window.location.href = mailtoLink;
 
-      // Show popup confirmation
-      alert("Thanks! I will contact you soon.");
-
-      // Clear form fields
-      document.getElementById("contactForm").reset();
-    });
-  </script>
-  <script>
-    document.querySelector(".menu-toggle").addEventListener("click", () => {
-      document.querySelector("nav ul").classList.toggle("show");
-    });
-  </script>
+ 
 
 </body>
 
